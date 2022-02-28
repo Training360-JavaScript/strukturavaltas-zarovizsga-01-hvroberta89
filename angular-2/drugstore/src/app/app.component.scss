@@ -1,13 +1,13 @@
 // 1/1. Használd a már létrehozott colors modult!
-
+@use "src/assets/modules/colors" as *;
 // 1/2. Használd a már létrehozott mixins modult!
-
+@use "src/assets/modules/mixins" as *;
 
 .container {
   align-items: center;
   // 2. Az animált tacskó hátterére állítsd be
   // a modul segítségével a következő színt: #d4e6ff
-
+  background-color: $background;
   display: flex;
   justify-content: center;
   margin: 0;
@@ -22,6 +22,11 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in;
   }*/
+  &-decoration, &-sound{
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+  }
 }
 
 .sausage-dog-animation {
@@ -36,6 +41,11 @@
     background-color: $background-phone;
     padding: 50px;
   }*/
+
+  @include for-phone-only{
+    background-color: $background-phone;
+    padding: 50px;
+  }
 }
 
 .yellow {
@@ -48,6 +58,7 @@
   // hátteret átváltoztató mixint,
   // és használd itt a colors modul sárga színével.
 
+  @include set-background($yellow);
 }
 
 .ear,

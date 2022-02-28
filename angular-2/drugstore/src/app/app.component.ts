@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Drug } from './model/drug';
+import { DrugService } from './service/drug.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'drugstore';
+
+  list$: Observable<Drug[]> = this.drugService.getAll();
+
+  constructor(
+    private drugService: DrugService,
+  ){}
 }
